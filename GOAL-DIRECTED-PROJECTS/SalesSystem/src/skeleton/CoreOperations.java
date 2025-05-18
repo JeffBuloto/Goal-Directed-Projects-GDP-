@@ -18,7 +18,7 @@ public class CoreOperations {
 		double TotalC = Dell + Asus
 		double TotalD = Dell + Asus
 		
-		String Sig = Assinante
+		boolean Assinante
 
 
 
@@ -35,24 +35,24 @@ Scanner new = new Scanner(System.in);
 			
 	if (Apple + Samsung >= 16000);
 		System.out.println("Congratulations!"  +  " You got 60% off on your purchase");
-	)else(
+	}else{
 		System.out.println("Add Apple products to your cart to get 60% off");
 	
 	if (Dell + Acer >= 10000);
 		System.out.println("Congratulations!"  +  " You got 50% off on your purchase");
-	)else(
+	}else{
 		System.out.println("Add Acer products to your cart to get 40% off");
 	
 	  
 	if (Dell + Asus >= 9000);
 		System.out.println("Congratulations!"  +  " You got 30% off on your purchase");
-	)else(
+	}else{
 		System.out.println("Add Asus products to your cart to get 20% off");
 
 
 	if boolean (Assinante) = true
 		System.out.println("You have received 60% off on your cart for beeing a member of our subscriptuion plan")
-	)else(
+	}else{
 		System.out.println("Be amember of our subscription club to get 60% off on any purchase")
 
 
@@ -61,16 +61,16 @@ Scanner new = new Scanner(System.in);
 
 	System.out.println("Thank you for buying with us, your order is already beeing processed by our delivery team")
 
-	if (double TotalA):
+	if (TotalA):
 		System.out.println("The total is" + TotalA)
 	
-	if (double TotalB):
+	if (TotalB):
 	        System.out.println("The total is" + TotalB)
 
-	if (double TotalC):
+	if (TotalC):
 	        System.out.println("The total is" + TotalC)
 
-	if (double TotalD):
+	if (TotalD):
 		System.out.println("The total is" + TotalD)
 	         
 		
