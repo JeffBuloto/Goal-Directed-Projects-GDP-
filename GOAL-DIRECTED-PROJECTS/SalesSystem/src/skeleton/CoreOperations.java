@@ -1,36 +1,24 @@
 package skeleton;
 
-import java.util.Scanner;
+import java.util.scanner;
 
-
-
-	public class CoreOperations {
-
-		public static void main(String[] args) {
-
-			int Apple = 8000;
-			int Samsung = 7000;
-			int Dell = 5000;
-			int Acer = 4000;
-			int Asus = 3000;
-			
-			double Total;
-			double TotalA = Apple + Samsung;
-			double TotalB = Dell + Acer;
-			double TotalC = Acer + Asus;
-			
-			
-			Scanner scanner = new Scanner(System.in) {
-
-
-				{
-
+public class CoreOperations {
+    public static void main(String[] args) {
+        
+       String Apple;
+       String Samsung;
+       String Acer;
+       String Dell;
+       String Lenovo;
+       
+       Scanner scanner = new Scanner(System.in);
+        
+        
 	System.out.println("Which tech brands are mostly of your interest?  ");
-	Scanner interest = scannernextLine();
+        Scanner string = scanner.nextInt();
 	
-
-	System.out.println("How many tech items would you like to buy?  ");
-	int items = scanner.nextInt();
+	System.out.println("Would you like to be part of our subscription program for costumers?");
+        boolean costumer = scanner.nextboolean();
 	
 			}
 	
@@ -41,7 +29,7 @@ import java.util.Scanner;
 				
 		if (Apple + Samsung >= 16000);
 			System.out.println("Congratulations!"  +  " You got 60% off on your purchase");
-		
+                  } else {
 			System.out.println("Add Apple products to your cart to get 60% off");
 		
 		if (Dell + Acer >= 12000);
@@ -82,3 +70,5 @@ import java.util.Scanner;
 	
 
 }
+
+
