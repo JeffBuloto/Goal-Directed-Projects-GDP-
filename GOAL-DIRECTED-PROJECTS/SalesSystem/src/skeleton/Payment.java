@@ -16,7 +16,7 @@ import java.util.Scanner;
     }
  
 	      
-	
+	// EXBIR OS DADOS DA COMPRA //
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 
@@ -36,9 +36,9 @@ import java.util.Scanner;
  
         scanner.close();
     }
- 
+ //SOLICITAR QUE O USUÁRIO SELECIONE QUAL(IS) PRODUTO(S) DESEJA COMPRAR E VERFICIAR SE ESTA(AO) DISPONIVEIS//
     private static double buildCart(Scanner scanner) {
-        System.out.println("Quantos e quais itens você deseja comprar? ");
+        System.out.println("Quais produtos você deseja comprar? ");
         int items = readPositiveInt(scanner);
  
         double total = 0;
@@ -60,7 +60,7 @@ import java.util.Scanner;
         return total;
     }
  
-    
+    //ESCOLHA DO METODO DE PAGAMENTO//
     private static String choosePaymentMethod(Scanner scanner) {
         System.out.println("\nEscolha a forma de pagamento:");
         System.out.println("1 - PayPal");
@@ -80,12 +80,13 @@ import java.util.Scanner;
             case 5: return "CreditCard";
 			case 6: return "Ethereum";
             default:
+		//TROCA DE METODO EM CASO DE ERRO NO PAGAMENTO VIA BITCOIN//		
                 System.out.println("Opção inválida. Por questões de segurança, pedimos que utilize um cartão de crédito válido.");
                 return "CreditCard";
         }
     }
  
-   
+   //CALCULAR O VALOR DA COMPRA COM A APLICACAO DO DESCONTO//
     private static double calculateDiscount(double total) {
         if (total >= 16000) return 0.60;
         if (total >= 12000) return 0.50;
@@ -96,7 +97,7 @@ import java.util.Scanner;
         return 0.0;
     }
  
-
+//LEITURA DO VALOR DIGITADO PELO USUARIO//
     private static int readPositiveInt(Scanner scanner) {
         while (!scanner.hasNextInt()) {
             System.out.println("Digite um número válido:   ");
