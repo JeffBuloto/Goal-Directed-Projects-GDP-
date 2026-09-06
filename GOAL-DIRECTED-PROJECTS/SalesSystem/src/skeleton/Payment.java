@@ -1,71 +1,107 @@
+import java.util.HashMao;
+import java.util.Map;
 import java.util.Scanner;
 
-public class Payment {
+ public class Payment {
 
+
+            private static final Map<String, Double> CATALOG = new HashMap<>();
+            static{
+		    CATALOG.put("MacBook", 10000.0);
+            CATALOG.put("GalaxyBook", 4000.0);
+            CATALOG.put("AcerNitro", 2500.0);
+            CATALOG.put("AlienWare", 9000.0);
+            CATALOG.put("Vivobook", 2000.0);
+            CATALOG.put("Lenovo", 1500.0);
+    }
+ 
+	      
+	
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+
+
+        double cartTotal = buildCart(scanner) {
+		String paymenMethod = choosePaymentMethod(scanner);
+
 		
-		int MacBook = 10000;
-                int GalaxyBook = 4000;
-                int AcerNitro = 2500;
-                int AlienWare = 9000;
-                int Vivobook = 2000;
-                int Lenovo = 1500;
-               
-                String Paypal;
-                String BitCoin;
-                String ApplePay;
-                String GooglePay;  
-                String CreditCard;
-                
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.println("How many tech items would you like to buy?  ");
-        int items = scanner.nextInt();
-        
-        System.out.println("Which tech items would like to buy");
-        boolean options = scanner.nextBoolean();
-        
-        System.out.println("Which payment method would you like to use?  ");
-        String payment = scanner.nextStr();
-       
-//=============================================================================//
-        System.out.println("Type 1 for PayPal: ");
-        System.out.println("Type 2 for  BitCoin: ");
-        System.out.println("Type 3 for  ApplePay: ");
-        System.out.println("Type 4 for  GooglePay: ");
-        System.out.println("Type 5 for CreditCard: ");
-        
-        if (MacBook + GalaxyBook >= 16000) {
-            System.out.println("Congratulations! You got 60% off on your purchase");
-           } else {
-            System.out.println("Add more itens to your cart to get 60% on your purchase");
-            
-        if (AcerNitro + AlienWare >= 12000) {
-            System.out.println("Congratulations! You got 50% off on your purchase");
-            } else {
-            System.out.println("Add more itens to your cart to get 50% on your purchase");
-        
-        if (Vivobook + Lenovo >= 5000 ) { 
-            System.out.println("Congratulations! You got 30% off on your purchase");
-            } else {
-            System.out.println("Add more itens to your cart to get 30% on your purchase");
-            
-        if (GalaxyBook + Vivobook >= 8000) {
-            System.out.println("Congratulations! You got 40% off on your purchase");
-            } else {
-            System.out.println("Add more itens to your cart to get 30% on your purchase");   
+		double discount = calculateDiscount(cartTotal);
+        double finalTotal = cartTotal - (cartTotal * discount);
+ 
+        System.out.println("\n=====Seu carrinho=====");
+        System.out.printf("Subtotal: R$ %.2f%n", cartTotal);
+        System.out.printf("Desconto aplicado: %.0f%%%n", discount * 100);
+        System.out.printf("Forma de pagamento: %s%n", paymentMethod);
+        System.out.printf("Total a pagar: R$ %.2f%n", finalTotal);
+ 
+        scanner.close();
+    }
+ 
+    private static double buildCart(Scanner scanner) {
+        System.out.println("Quantos e quais itens você deseja comprar? ");
+        int items = readPositiveInt(scanner);
+ 
+        double total = 0;
+        int i = 1;
+        while (i <= items) {
+            System.out.println("Item " + i + " de " + items
+                    + " - Produtos disponíveis: " + CATALOG.keySet());
+            String productName = scanner.next();
+            Double price = CATALOG.get(productName);
+ 
+            if (price == null) {
+                System.out.println("Produto não encontrado. Tente novamente.");
+                continue; 
+            }
+ 
+            total += price;
+            i++;
         }
+        return total;
+    }
+ 
+    
+    private static String choosePaymentMethod(Scanner scanner) {
+        System.out.println("\nEscolha a forma de pagamento:");
+        System.out.println("1 - PayPal");
+        System.out.println("2 - BitCoin");
+        System.out.println("3 - ApplePay");
+        System.out.println("4 - GooglePay");
+        System.out.println("5 - CreditCard");
+		System.out.println("6- Ethereum"");
+ 
+        int option = readPositiveInt(scanner);
+ 
+        switch (option) {
+            case 1: return "PayPal";
+            case 2: return "BitCoin";
+            case 3: return "ApplePay";
+            case 4: return "GooglePay";
+            case 5: return "CreditCard";
+			case 6: return "Ethereum";
+            default:
+                System.out.println("Opção inválida. Por questões de segurança, pedimos que utilize um cartão de crédito válido.");
+                return "CreditCard";
         }
-        }
-        }
-        
-//=============================================================================//
+    }
+ 
+   
+    private static double calculateDiscount(double total) {
+        if (total >= 16000) return 0.60;
+        if (total >= 12000) return 0.50;
+        if (total >= 8000)  return 0.40;
+        if (total >= 5000)  return 0.30;
+		default:
+			System.out.println("Você adquiriu um desconto de"  + 0.0)
+        return 0.0;
+    }
+ 
 
-        System.out.println("The total is: ");
-       
-		
-
-	}
-
+    private static int readPositiveInt(Scanner scanner) {
+        while (!scanner.hasNextInt()) {
+            System.out.println("Digite um número válido:   ");
+            scanner.next();
+        }
+        return scanner.nextInt();
+    }
 }
-
