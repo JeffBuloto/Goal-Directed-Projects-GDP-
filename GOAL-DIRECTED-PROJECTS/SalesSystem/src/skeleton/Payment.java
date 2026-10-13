@@ -16,7 +16,7 @@ import java.util.Scanner;
     }
  
 	      
-	// EXBIR OS DADOS DA COMPRA //
+	//IMPRESSÃO DOS DADOS FISCAIS DA COMPRA REALIZADA ONLINE//
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 
@@ -36,7 +36,7 @@ import java.util.Scanner;
  
         scanner.close();
     }
- //SOLICITAR QUE O USUÁRIO SELECIONE QUAL(IS) PRODUTO(S) DESEJA COMPRAR E VERFICIAR SE ESTA(AO) DISPONIVEIS//
+ //VERIFICAR SE O(S) PRODUTO(S) SELECIONADO(S) ESTÃO DISPONIVEIS//
     private static double buildCart(Scanner scanner) {
         System.out.println("Quais produtos você deseja comprar? ");
         int items = readPositiveInt(scanner);
@@ -80,9 +80,18 @@ import java.util.Scanner;
             case 5: return "CreditCard";
 			case 6: return "Ethereum";
             default:
-		//TROCA DE METODO EM CASO DE ERRO NO PAGAMENTO VIA BITCOIN//		
-                System.out.println("Opção inválida. Por questões de segurança, pedimos que utilize um cartão de crédito válido.");
+		//TROCA DE METODO EM CASO DE ERRO NO PAGAMENTO VIA BITCOIN//
+				boolean aceitaBitcoin= true;
+
+			  if (aceitaBitcoin) = true;
+				    System.out.println("SUA COMPRA FOI REALIZADA! Seu pedido chegará em até 15 dias"
+									   
+					} else {				   
+                System.out.println("TRANSAÇÃO NÃO ACEITA: Por questões de segurança, solicitamos que selecione cartão de crédito como forma de pagamento..");
                 return "CreditCard";
+				
+				
+				
         }
     }
  
@@ -96,12 +105,13 @@ import java.util.Scanner;
 			System.out.println("Você adquiriu um desconto de"  + 0.0)
         return 0.0;
     }
- 
-//LEITURA DO VALOR DIGITADO PELO USUARIO//
+
+	 
+//PRA QUE SERVE ISSO?????????????????// 
     private static int readPositiveInt(Scanner scanner) {
         while (!scanner.hasNextInt()) {
             System.out.println("Digite um número válido:   ");
-            scanner.next();
+             scanner.next();
         }
         return scanner.nextInt();
     }
