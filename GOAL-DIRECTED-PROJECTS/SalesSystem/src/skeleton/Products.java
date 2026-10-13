@@ -17,7 +17,7 @@ public class Products {
       System.out.println("Are you interested into laptops for work?  ");
       boolean work = scanner.nextBoolean();
  //====================================================================================================//
-      
+      //INDICACAO DE MODELOS COM BASE NAS DEMANDAS DO CONSUMIDOR//
              if (games) {
                 System.out.println("We highly recommend you either the Alienware or the  Predator Series");
     	        System.out.println("For games that a modest hardware is enough, we highly recommend you the Nitro series");
@@ -32,7 +32,8 @@ public class Products {
                  System.out.println("Our store has a discount system based on the amount of items in your cart, the brand, and your membership status");
             
         }
-//====================================================================================================//             
+//====================================================================================================//          
+		//PARAMETROS UTILIZADOS PELO SISTEMA DE DESCONTO DA LOJA: NUMERO DE ITENS NO CARRINHO, MARCAS SELECIONADAS E SE O CONSUMIDOR FAZ PARTE DO CLUBE DE ASSINATURA DA LOJA//
              System.out.println("Our store has a discount system that is based on the ammount of items on your cart, the correspoding brand and if you are a member of your subscription club");
              
              }
