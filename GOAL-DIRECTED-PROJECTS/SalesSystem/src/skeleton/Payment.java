@@ -36,7 +36,7 @@ import java.util.Scanner;
  
         scanner.close();
     }
- //VERIFICAR SE O(S) PRODUTO(S) SELECIONADO(S) ESTÃO DISPONIVEIS//
+ //SELECAO E VERIVICACAO DE PRODUTO(S)//
     private static double buildCart(Scanner scanner) {
         System.out.println("Quais produtos você deseja comprar? ");
         int items = readPositiveInt(scanner);
