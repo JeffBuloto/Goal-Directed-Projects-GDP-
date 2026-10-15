@@ -1,6 +1,6 @@
 import java.util.HashMao;
 import java.util.Map;
-import java.util.Scanner;
+import javax.swing.*;
 
  public class Payment {
 
@@ -59,27 +59,51 @@ import java.util.Scanner;
         }
         return total;
     }
+
+//LISTA CLICAVEL PARA ESCOLHA DO METODO DE PAGAMENTO//
+
+	 JList<PaymentMethod> list = new JList<>(PaymentMethod.values());
+	 list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+     list.setSelectedIndex(0);
+
+  int result = JOptionPane.showConfirmDialog(
+	  null, new JScrollPane(list), "Forma de Pagamento",
+	  JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+  if (result == JOptionPane.OK_OPTION) (
+	  PaymentMethod chosen = list.getSelectedValue();
+
+	 
+    //INTERFACE GRAFICA PARA ESCOLHA DE FORMA DE PAGAMENTO PELO USUARIO//
+    private static PaymentMethod choosePaymentMethod{
+		PaymentMethod[] methods = PaymentMethod.values[].
+		String[] labels = java.util.Arrays.stream(methods)
+		         .map(PaymentMethod::getDisplayName)
+			     .toArray(String::new);
+
+		int choice = JOptionPane.showOptionDialog(
+			null,
+			"Escolha a forma de pagamento",
+			"Pagamento",
+			JOptionPane.DEFAULT_OPTION,
+			JOptionPane.QUESTION_MESSAGE,
+			null,
+			labels,
+			labels[0]);
+
+		return choice == JOptionPane.CLOSED_OPTION ? null : methods[choice];
+
+	}
+
+// EXIBICAO DAS OPCOES DE PAGEMENTO
+		while (true) {
+			System.out.println("\n=== Forma de pagamento ===");
+			for(int i= 0; i < methods.length; i++) {
+				System.out.printf("%d) %s%n", i + 1, methods[i].getDisplayName());
+
+			}
+			System.out.println("Selecione uma opção: Cartão de crédito, ApplePay, GooglePay, Bitcoin, Ethereum.")
  
-    //ESCOLHA DO METODO DE PAGAMENTO//
-    private static String choosePaymentMethod(Scanner scanner) {
-        System.out.println("\nEscolha a forma de pagamento:");
-        System.out.println("1 - PayPal");
-        System.out.println("2 - BitCoin");
-        System.out.println("3 - ApplePay");
-        System.out.println("4 - GooglePay");
-        System.out.println("5 - CreditCard");
-		System.out.println("6- Ethereum"");
- 
-        int option = readPositiveInt(scanner);
- 
-        switch (option) {
-            case 1: return "PayPal";
-            case 2: return "BitCoin";
-            case 3: return "ApplePay";
-            case 4: return "GooglePay";
-            case 5: return "CreditCard";
-			case 6: return "Ethereum";
-            default:
 		//TROCA DE METODO EM CASO DE ERRO NO PAGAMENTO VIA BITCOIN//
 				boolean aceitaBitcoin= true;
 
