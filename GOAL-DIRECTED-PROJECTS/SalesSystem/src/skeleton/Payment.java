@@ -1,5 +1,6 @@
 import java.util.HashMao;
 import java.util.Map;
+import java.util.Scanner;
 import javax.swing.*;
 
  public class Payment {
