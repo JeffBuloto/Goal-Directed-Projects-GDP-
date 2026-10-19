@@ -120,7 +120,7 @@ import javax.swing.*;
         }
     }
  
-   //CALCULAR O VALOR DA COMPRA COM A APLICACAO DO DESCONTO//
+   
     private static double calculateDiscount(double total) {
         if (total >= 16000) return 0.60;
         if (total >= 12000) return 0.50;
@@ -131,13 +131,4 @@ import javax.swing.*;
         return 0.0;
     }
 
-	 
-//PRA QUE SERVE ISSO?????????????????// 
-    private static int readPositiveInt(Scanner scanner) {
-        while (!scanner.hasNextInt()) {
-            System.out.println("Digite um número válido:   ");
-             scanner.next();
-        }
-        return scanner.nextInt();
-    }
-}
+	
