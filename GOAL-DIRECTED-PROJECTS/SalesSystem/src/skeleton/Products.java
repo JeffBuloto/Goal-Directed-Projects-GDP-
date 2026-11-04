@@ -1,4 +1,3 @@
-package skeleton;
 
 import java.util.Scanner;
 
@@ -47,4 +46,6 @@ public class Products {
 	}
 
 }
+
+
 
