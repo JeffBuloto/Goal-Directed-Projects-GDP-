@@ -1,33 +1,65 @@
-import java.util.HashMao;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.JOptionPane;
 import java.util.Map;
-import java.util.Scanner;
-import javax.swing.*;
 
- public class Payment {
+    public class Payment {
 
-
-            private static final Map<String, Double> CATALOG = new HashMap<>();
-            static{
-		    CATALOG.put("MacBook", 10000.0);
-            CATALOG.put("GalaxyBook", 4000.0);
-            CATALOG.put("AcerNitro", 2500.0);
-            CATALOG.put("AlienWare", 9000.0);
-            CATALOG.put("Vivobook", 2000.0);
-            CATALOG.put("Lenovo", 1500.0);
+     
+      public Payment() {
+         //Definiçóes da tela de pagamento//
+         Jframe frame = new Jframe("Minha janela de pagamentos");
+         frame.setSize(400, 300);
+         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         frame.setLocationRelativeTo(null); //
+         frame.setVisible(true);
+        }
     }
- 
-	      
-	//IMPRESSÃO DOS DADOS FISCAIS DA COMPRA REALIZADA ONLINE//
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
 
+       public class Catalog() {
+          //Exibição dos notebooks da loja
+          Jframe frame = new Jframe("Produtos a venda: 
+                                        MacBook, 10000.0
+                                        GalaxyBook, 4000.0
+                                        AcerNitro, 2500.0                 
+                                        AlienWare, 9000.0  
+                                        Vivobook, 2000.0
+                                        Lenovo, 1500.0 ")
+          );
+          frame.setSize(600, 500);
+          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          frame.setLocationRelativeTo(null); //
+          frame.setVisible(true);
+    
+    public static void main (String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+            @Override
+            public void() {
+                new Payment
+            }
+     
+                
+             //CATALOG.put("MacBook", 10000.0);
+             //CATALOG.put("GalaxyBook", 4000.0);
+             //CATALOG.put("AcerNitro", 2500.0);
+             //CATALOG.put("AlienWare", 9000.0);
+             //CATALOG.put("Vivobook", 2000.0);
+             //CATALOG.put("Lenovo", 1500.0);//
+    }
+	     
+            
+            
 
-        double cartTotal = buildCart(scanner) {
-		String paymenMethod = choosePaymentMethod(scanner);
+       // double cartTotal = buildCart(scanner) {
+	//	String paymenMethod = choosePaymentMethod(scanner);
 
 		
-		double discount = calculateDiscount(cartTotal);
-        double finalTotal = cartTotal - (cartTotal * discount);
+		//double discount = calculateDiscount(cartTotal);
+       // double finalTotal = cartTotal - (cartTotal * discount);
  
         System.out.println("\n=====Seu carrinho=====");
         System.out.printf("Subtotal: R$ %.2f%n", cartTotal);
@@ -38,47 +70,53 @@ import javax.swing.*;
         scanner.close();
     }
  //SELECAO E VERIFICACAO DE PRODUTO(S)//
-    private static double buildCart(Scanner scanner) {
-        System.out.println("Quais produtos você deseja comprar? ");
-        int items = readPositiveInt(scanner);
+    private static double buildCart() {
+        int items = readPositiveInt();
  
         double total = 0;
         int i = 1;
         while (i <= items) {
-            System.out.println("Item " + i + " de " + items
-                    + " - Produtos disponíveis: " + CATALOG.keySet());
-            String productName = scanner.next();
-            Double price = CATALOG.get(productName);
- 
+           String productName = JOptionPane.showInputDialog(
+            null,
+                   
+            "Item" + i + " de " + items
+                       + "\nProdutos disponíveis: " +  CATALOG.keySet(),
+            "Seleção de produtos",
+            JOptionPane.QUESTION_MESSAGE);
+        
+        //Caso o usuário cancele a operação de criar o carrinho ou feche a janela
             if (price == null) {
-                System.out.println("Produto não encontrado. Tente novamente.");
-                continue; 
-            }
+                JOptionPane.showMessageDialog(null, "Compra cancelada. ");
+                return total;
+        
+           }
  
+           productName = productName.trim();
+           Double price = CATALOG.get(productName);
+        
+           if (price == null) {
+               JOptionPane.showMessageDialog(
+               null,
+               "Produto inexistente. Por favor, tente novamente",
+               "Erro na busca",
+               JOptionPane.ERROR_MESSAGE);
+            continue;
+        
+        }
             total += price;
             i++;
         }
         return total;
-    }
+}
+
 
 //LISTA CLICAVEL PARA ESCOLHA DO METODO DE PAGAMENTO//
-
-	 JList<PaymentMethod> list = new JList<>(PaymentMethod.values());
-	 list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-     list.setSelectedIndex(0);
-
-  int result = JOptionPane.showConfirmDialog(
-	  null, new JScrollPane(list), "Forma de Pagamento",
-	  JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-
-  if (result == JOptionPane.OK_OPTION) (
-	  PaymentMethod chosen = list.getSelectedValue();
-
+   
 	 
     //INTERFACE GRAFICA PARA ESCOLHA DE FORMA DE PAGAMENTO PELO USUARIO//
-    private static PaymentMethod choosePaymentMethod{
+     private static PaymentMethod choosePaymentMethod{
 		PaymentMethod[] methods = PaymentMethod.values[].
-		String[] labels = java.util.Arrays.stream(methods)
+		 String[] labels = java.util.Arrays.stream(methods)
 		         .map(PaymentMethod::getDisplayName)
 			     .toArray(String::new);
 
@@ -86,10 +124,10 @@ import javax.swing.*;
 			null,
 			"Escolha a forma de pagamento",
 			"Pagamento",
-			JOptionPane.DEFAULT_OPTION,
+			JOptSionPane.DEFAULT_OPTION,
 			JOptionPane.QUESTION_MESSAGE,
 			null,
-			labels,
+			labels
 			labels[0]);
 
 		return choice == JOptionPane.CLOSED_OPTION ? null : methods[choice];
@@ -120,7 +158,7 @@ import javax.swing.*;
         }
     }
  
-   
+   //CALCULAR O VALOR DA COMPRA COM A APLICACAO DO DESCONTO//
     private static double calculateDiscount(double total) {
         if (total >= 16000) return 0.60;
         if (total >= 12000) return 0.50;
@@ -129,6 +167,12 @@ import javax.swing.*;
 		default:
 			System.out.println("Você adquiriu um desconto de"  + 0.0)
         return 0.0;
-    }
+ 
+    
+    
+  
+
+
+
 
 	
